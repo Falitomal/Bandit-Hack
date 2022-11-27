@@ -23,3 +23,7 @@ Level 2
 	ls , cd , cat , file , du , find
 
 	----->
+	First use cd .. for see home and users, then see some folders, use cd for navigate to folder "bandit1", now use ls and see file named "-", this is a special character.
+	You can see this file with a tip, a "./", to see use command:
+	cat ./-
+	And now see the password for next level rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
