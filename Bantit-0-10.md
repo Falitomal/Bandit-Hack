@@ -82,3 +82,63 @@ Level 5-6
 
 Level 6-7
 	----->
+
+	Bandit Level 6 → Level 7
+	Level Goal
+	The password for the next level is stored somewhere on the server and has all of the following properties:
+	owned by user bandit7
+	owned by group bandit6
+	33 bytes in size
+	Commands you may need to solve this level
+	ls , cd , cat , file , du , find , grep
+
+	En este caso, vamos a irnos a la raiz dado que dice en cualquier lugar y vamos a usar el comando "find . -group bandit6 -user bandit7 -size 33c -type f 2>/dev/null", para buscar por group y usuarios, ademas del tamaño especifico y que elimine los errores con "2>/dev/null", encontraremos que en la mitad final de la busqueda hay un archivo en
+	"./var/lib/dpkg/info/bandit7.password", entonces mostramos el archivo y obtenemos la clave z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+
+Bandit Level 7 → Level 8
+
+	Level Goal
+	The password for the next level is stored in the file data.txt next to the word millionth
+
+	Commands you may need to solve this level
+	man, grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+	En este level vamos a buscar rapidamente con el comando find el archivo data.txt y que corte donde ponga bandit7, con el comando "find / -type f | grep data.txt | grep bandit7"
+	Luego al ver el directorio y el archivo /home/bandit7/data.txt, vamos a leerlo vemos que tiene mucho texto y hacemos una seleccion con la palabra millionth con el comando "cat /home/bandit7/data.txt | grep millionth"
+	millionth       TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+
+Bandit Level 8 → Level 9
+	Level Goal
+	The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+	Commands you may need to solve this level
+	grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+	
+	En este ejercicio vemos que con ls sale directamente el archivo, asi pues vamos a ordenarlo con sort, se muestran muchas lineas y tenemos que buscar la que no se repita asi pues usamos el comando uniq con -u para mostrar solo las unicas, el comando final seria:
+	sort data.txt | uniq -u
+	obteniendo en la linea 1001 el password: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+
+Bandit Level 9 → Level 10
+	Level Goal
+	The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+	Commands you may need to solve this level
+	grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+	Vemos el archivo en el directorio y usamos cat concatenado junto a strings, vemos que salen varios textos por filas, asi como nos dice que tiene varios == vamos a selecionarlo con grep el resultado del comando es :
+	cat data.txt | strings | grep "===="
+	y el password es G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+
+Bandit Level 10 → Level 11
+	Level Goal
+	The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+	Commands you may need to solve this level
+	grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+	Lo mismo que en el anterior usamos cat para leerlo junto con base64 -d para que decodifique, luego de haber leido el man de base64, dando el resultado de :
+	cat data.txt | base64 -d
+	The password is 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+
+Bandit Level 11 → Level 12
+	Level Goal
+	The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+	Commands you may need to solve this level
+	grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
