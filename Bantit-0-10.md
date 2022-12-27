@@ -142,3 +142,6 @@ Bandit Level 11 → Level 12
 	Commands you may need to solve this level
 	grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 
+	Use info in wiki and command tr, the result is 
+	tr 'A-Za-z' 'N-ZA-Mn-za-m' <<< "Gur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEi"
+	The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
